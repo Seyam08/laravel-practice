@@ -6,15 +6,18 @@
     <title>{{ $title ?? 'Books' }}</title>
     @vite('resources/css/app.css')
 </head>
-<body>
-    <header>
-        <nav>
-            <a href="{{ url('/') }}">Home</a>
-            <a href="{{ route('books.index') }}">Books</a>
+<body class="min-h-screen bg-gray-50">
+    <header class="border-b border-gray-200 bg-white">
+        <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+            <a href="{{ url('/') }}" class="text-xl font-bold text-red-500">Book Network</a>
+            <div class="flex gap-6 text-sm font-medium text-gray-600">
+                <a href="{{ route('books.index') }}" class="hover:text-gray-900">All Books</a>
+                <a href="#" class="hover:text-gray-900">Create New Book</a>
+            </div>
         </nav>
     </header>
 
-    <main>
+    <main class="mx-auto max-w-5xl px-6 py-10">
         {{ $slot }}
     </main>
 </body>
