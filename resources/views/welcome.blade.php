@@ -8,6 +8,6 @@
 <body>
     <h1>Welcome to Seyam Laravel Practice</h1>
     <p>This is a simple welcome page for the Laravel practice application.</p>
-    <a href="#" class="btn">Go to Home</a>
+    <a href="/books" class="btn">Go to Home</a>
 </body>
 </html>
