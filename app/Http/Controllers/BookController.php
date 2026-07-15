@@ -15,9 +15,10 @@ class BookController extends Controller
         return view('books.index', ['books' => $books]);
     }
 
-    public function show($id)
+    public function show(Book $book)
     {
-        $book = Book::with('author')->findOrFail($id);
+
+        $book->load('author');
 
         return view('books.show', ['book' => $book]);
     }
