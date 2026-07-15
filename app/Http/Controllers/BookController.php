@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -19,5 +20,26 @@ class BookController extends Controller
         $book = Book::with('author')->findOrFail($id);
 
         return view('books.show', ['book' => $book]);
+    }
+
+    public function create()
+    {
+        $authors = Author::orderBy('name')->get();
+
+        return view('books.create', ['authors' => $authors]);
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'author_id' => ['required', 'exists:authors,id'],
+            'description' => ['required', 'string'],
+            'price' => ['required', 'numeric', 'min:0'],
+        ]);
+
+        $book = Book::create($validated);
+
+        return redirect()->route('books.show', $book->id);
     }
 }
