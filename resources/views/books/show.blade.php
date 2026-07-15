@@ -8,7 +8,7 @@
         <div class="border-b border-gray-100 px-6 py-5">
             <span class="text-xs font-medium uppercase tracking-wide text-gray-400">Book #{{ $book->id }}</span>
             <h1 class="mt-1 text-2xl font-bold text-gray-900">{{ $book->title }}</h1>
-            <p class="mt-1 text-sm text-gray-500">by {{ $book->author_name }}</p>
+            <p class="mt-1 text-sm text-gray-500">by {{ $book->author->name }}</p>
         </div>
 
         <div class="px-6 py-5">
