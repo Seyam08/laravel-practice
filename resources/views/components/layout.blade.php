@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? 'Books' }}</title>
     @vite('resources/css/app.css')
 </head>
+
 <body class="min-h-screen bg-gray-50">
     <header class="border-b border-gray-200 bg-white">
         <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
             <a href="{{ url('/') }}" class="text-xl font-bold text-red-500">Book Network</a>
             <div class="flex gap-6 text-sm font-medium text-gray-600">
                 <a href="{{ route('books.index') }}" class="hover:text-gray-900">All Books</a>
-                <a href="#" class="hover:text-gray-900">Create New Book</a>
+                <a href="{{ route('books.create') }}" class="hover:text-gray-900">Add New Book</a>
             </div>
         </nav>
     </header>
@@ -21,4 +23,5 @@
         {{ $slot }}
     </main>
 </body>
+
 </html>
