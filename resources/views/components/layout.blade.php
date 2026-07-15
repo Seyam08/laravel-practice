@@ -9,6 +9,19 @@
 </head>
 
 <body class="min-h-screen bg-gray-50">
+    @if (session('create-success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative text-center"
+            role="alert">
+            <strong class="font-bold">Success! </strong>
+            <span class="block sm:inline">{{ session('create-success') }}</span>
+        </div>
+    @endif
+    @if (session('delete-success'))
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative text-center" role="alert">
+            <strong class="font-bold">Success! </strong>
+            <span class="block sm:inline">{{ session('delete-success') }}</span>
+        </div>
+    @endif
     <header class="border-b border-gray-200 bg-white">
         <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
             <a href="{{ url('/') }}" class="text-xl font-bold text-red-500">Book Network</a>
