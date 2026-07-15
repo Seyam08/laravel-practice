@@ -9,14 +9,15 @@ class BookController extends Controller
 {
     public function index()
     {
-        $books = Book::orderBy('created_at', 'desc')->paginate(10);
+        $books = Book::with('author')->orderBy('created_at', 'desc')->paginate(10);
 
         return view('books.index', ['books' => $books]);
     }
 
     public function show($id)
     {
-        $book = Book::findOrFail($id);
+        $book = Book::with('author')->findOrFail($id);
+
         return view('books.show', ['book' => $book]);
     }
 }
