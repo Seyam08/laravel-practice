@@ -11,5 +11,7 @@
             </x-card>
         @endforeach
     </div>
-    {{ $books->links() }}
+    <div class="mt-6 flex items-center justify-center">
+        {{ $books->links() }}
+    </div>
 </x-layout>
