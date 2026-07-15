@@ -40,7 +40,7 @@ class BookController extends Controller
 
         $book = Book::create($validated);
 
-        return redirect()->route('books.show', $book->id);
+        return redirect()->route('books.show', $book->id)->with('create-success', 'Book created successfully.');
     }
 
     public function destroy($id)
@@ -48,6 +48,6 @@ class BookController extends Controller
         $book = Book::findOrFail($id);
         $book->delete();
 
-        return redirect()->route('books.index');
+        return redirect()->route('books.index')->with('delete-success', 'Book deleted successfully.');
     }
 }
