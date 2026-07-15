@@ -10,6 +10,4 @@ Route::get('/', function () {
 
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
 
-Route::get('/book/{id}', function ($id) {
-    return view('books.show', ['id' => $id]);
-})->name('books.show');
+Route::get('/book/{id}', [BookController::class, 'show'])->name('books.show');
