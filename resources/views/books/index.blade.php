@@ -11,4 +11,5 @@
             </x-card>
         @endforeach
     </div>
+    {{ $books->links() }}
 </x-layout>

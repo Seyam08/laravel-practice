@@ -9,7 +9,7 @@ class BookController extends Controller
 {
     public function index()
     {
-        $books = Book::orderBy('created_at', 'desc')->get();
+        $books = Book::orderBy('created_at', 'desc')->paginate(10);
 
         return view('books.index', ['books' => $books]);
     }
