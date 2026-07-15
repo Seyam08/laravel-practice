@@ -30,5 +30,15 @@
                 <p class="text-sm text-gray-700">{{ $book->updated_at->format('M j, Y') }}</p>
             </div>
         </div>
+
+        <div class="flex justify-end gap-3 px-6 py-4">
+            <form action="{{ route('books.destroy', $book->id) }}" method="POST"
+                onsubmit="return confirm('Are you sure you want to delete this book?');">
+                @csrf
+                @method('DELETE')
+                <button type="submit"
+                    class="rounded-md bg-red-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">Delete</button>
+            </form>
+        </div>
     </div>
 </x-layout>
