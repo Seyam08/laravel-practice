@@ -20,7 +20,6 @@ class BookFactory extends Factory
     {
         return [
             'title' => fake()->sentence(3),
-            'author_name' => fake()->name(),
             'description' => fake()->paragraph(),
             'price' => fake()->randomFloat(2, 5, 100),
             'author_id' => Author::inRandomOrder()->first()->id,
