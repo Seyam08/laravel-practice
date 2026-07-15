@@ -1,5 +1,6 @@
 <x-layout title="Book Details">
-    <a href="{{ route('books.index') }}" class="mb-6 inline-flex items-center gap-1 text-sm font-medium text-gray-500 hover:text-red-500">
+    <a href="{{ route('books.index') }}"
+        class="mb-6 inline-flex items-center gap-1 text-sm font-medium text-gray-500 hover:text-red-500">
         &larr; Back to Books
     </a>
 
