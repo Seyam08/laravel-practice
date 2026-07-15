@@ -16,4 +16,4 @@ Route::get('/add-book', [BookController::class, 'create'])->name('books.create')
 
 Route::post('/books', [BookController::class, 'store'])->name('books.store');
 
-Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('books.destroy');
+Route::delete('/books/{book}', [BookController::class, 'destroy'])->name('books.destroy');
