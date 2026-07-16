@@ -50,4 +50,14 @@ class AuthController extends Controller
 
         return redirect()->route('books.index')->with('login-success', 'Login successful. Welcome back!');
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('logout-success', 'You have been logged out successfully.');
+    }
 }

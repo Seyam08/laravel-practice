@@ -28,8 +28,15 @@
             <div class="flex gap-6 text-sm font-medium text-gray-600">
                 <a href="{{ route('books.index') }}" class="hover:text-gray-900">All Books</a>
                 <a href="{{ route('books.create') }}" class="hover:text-gray-900">Add New Book</a>
-                <a href="{{ route('show.register') }}" class="hover:text-gray-900">Register</a>
-                <a href="{{ route('show.login') }}" class="hover:text-gray-900">Login</a>
+                @auth
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="hover:text-gray-900">Logout</button>
+                    </form>
+                @else
+                    <a href="{{ route('show.register') }}" class="hover:text-gray-900">Register</a>
+                    <a href="{{ route('show.login') }}" class="hover:text-gray-900">Login</a>
+                @endauth
             </div>
         </nav>
     </header>
