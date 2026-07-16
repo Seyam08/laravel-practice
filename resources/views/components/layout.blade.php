@@ -22,6 +22,27 @@
             <span class="block sm:inline">{{ session('delete-success') }}</span>
         </div>
     @endif
+    @if (session('register-success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative text-center"
+            role="alert">
+            <strong class="font-bold">Success! </strong>
+            <span class="block sm:inline">{{ session('register-success') }}</span>
+        </div>
+    @endif
+    @if (session('login-success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative text-center"
+            role="alert">
+            <strong class="font-bold">Success! </strong>
+            <span class="block sm:inline">{{ session('login-success') }}</span>
+        </div>
+    @endif
+    @if (session('logout-success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative text-center"
+            role="alert">
+            <strong class="font-bold">Success! </strong>
+            <span class="block sm:inline">{{ session('logout-success') }}</span>
+        </div>
+    @endif
     <header class="border-b border-gray-200 bg-white">
         <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
             <a href="{{ url('/') }}" class="text-xl font-bold text-red-500">Book Network</a>
