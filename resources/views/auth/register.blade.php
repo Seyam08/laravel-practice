@@ -7,25 +7,34 @@
 
         <h1 class="mb-8 text-2xl font-bold text-gray-900">Create an Account</h1>
 
-        <form action="#" method="POST" class="space-y-6 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+        <form action="{{ route('register') }}" method="POST" class="space-y-6 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
             @csrf
 
             <div>
                 <label for="name" class="mb-1.5 block text-sm text-gray-600">Name:</label>
                 <input type="text" name="name" id="name" value="{{ old('name') }}" required
                     class="block w-full rounded-lg border border-gray-300 bg-slate-50 px-4 py-3 text-gray-900 focus:border-gray-400 focus:bg-white focus:outline-none focus:ring-0">
+                @error('name')
+                    <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                @enderror
             </div>
 
             <div>
                 <label for="email" class="mb-1.5 block text-sm text-gray-600">Email:</label>
                 <input type="email" name="email" id="email" value="{{ old('email') }}" required
                     class="block w-full rounded-lg border border-gray-300 bg-slate-50 px-4 py-3 text-gray-900 focus:border-gray-400 focus:bg-white focus:outline-none focus:ring-0">
+                @error('email')
+                    <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                @enderror
             </div>
 
             <div>
                 <label for="password" class="mb-1.5 block text-sm text-gray-600">Password:</label>
                 <input type="password" name="password" id="password" required
                     class="block w-full rounded-lg border border-gray-300 bg-slate-50 px-4 py-3 text-gray-900 focus:border-gray-400 focus:bg-white focus:outline-none focus:ring-0">
+                @error('password')
+                    <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                @enderror
             </div>
 
             <div>
