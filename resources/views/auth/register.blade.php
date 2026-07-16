@@ -12,13 +12,13 @@
 
             <div>
                 <label for="name" class="mb-1.5 block text-sm text-gray-600">Name:</label>
-                <input type="text" name="name" id="name" required
+                <input type="text" name="name" id="name" value="{{ old('name') }}" required
                     class="block w-full rounded-lg border border-gray-300 bg-slate-50 px-4 py-3 text-gray-900 focus:border-gray-400 focus:bg-white focus:outline-none focus:ring-0">
             </div>
 
             <div>
                 <label for="email" class="mb-1.5 block text-sm text-gray-600">Email:</label>
-                <input type="email" name="email" id="email" required
+                <input type="email" name="email" id="email" value="{{ old('email') }}" required
                     class="block w-full rounded-lg border border-gray-300 bg-slate-50 px-4 py-3 text-gray-900 focus:border-gray-400 focus:bg-white focus:outline-none focus:ring-0">
             </div>
 
