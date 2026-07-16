@@ -46,10 +46,11 @@
     <header class="border-b border-gray-200 bg-white">
         <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
             <a href="{{ url('/') }}" class="text-xl font-bold text-red-500">Book Network</a>
-            <div class="flex gap-6 text-sm font-medium text-gray-600">
-                <a href="{{ route('books.index') }}" class="hover:text-gray-900">All Books</a>
-                <a href="{{ route('books.create') }}" class="hover:text-gray-900">Add New Book</a>
+            <div class="flex items-center gap-6 text-sm font-medium text-gray-600">
                 @auth
+                    <a href="{{ route('books.index') }}" class="hover:text-gray-900">All Books</a>
+                    <a href="{{ route('books.create') }}" class="hover:text-gray-900">Add New Book</a>
+
                     <a href="{{ route('profile') }}" class="flex items-center gap-1.5 hover:text-gray-900">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
                             <path fill-rule="evenodd"
@@ -60,7 +61,8 @@
                     </a>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="hover:text-gray-900">Logout</button>
+                        <button type="submit"
+                            class="rounded-lg border border-red-300 px-3 py-1.5 text-red-600 transition-colors hover:border-red-300 hover:bg-red-50 hover:text-red-600">Logout</button>
                     </form>
                 @else
                     <a href="{{ route('show.register') }}" class="hover:text-gray-900">Register</a>
