@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -42,11 +43,21 @@ class AuthController extends Controller
             'password' => ['required', 'string'],
         ]);
 
-        if (!auth()->attempt($validated)) {
-            return back()->withErrors([
-                'email' => 'The provided credentials do not match our records.',
+        $user = User::where('email', $validated['email'])->first();
+
+        if (!$user) {
+            throw ValidationException::withMessages([
+                'email' => 'This email address is not registered!',
             ]);
         }
+
+        if (!Auth::attempt($validated)) {
+            throw ValidationException::withMessages([
+                'password' => 'The provided password is incorrect.',
+            ]);
+        }
+
+        $request->session()->regenerate();
 
         return redirect()->route('books.index')->with('login-success', 'Login successful. Welcome back!');
     }
