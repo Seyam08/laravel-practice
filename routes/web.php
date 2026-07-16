@@ -9,19 +9,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('register', [AuthController::class, 'showRegisterForm'])->name('show.register');
-Route::get('login', [AuthController::class, 'showLoginForm'])->name('show.login');
-Route::post('register', [AuthController::class, 'register'])->name('register');
-Route::post('login', [AuthController::class, 'login'])->name('login');
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+Route::middleware('auth')->controller(AuthController::class)->group(function () {
+    Route::get('/profile',  'profile')->name('profile');
+    Route::post('/logout', 'logout')->name('logout');
+});
 
-Route::get('/books', [BookController::class, 'index'])->name('books.index');
+Route::middleware('auth')->controller(BookController::class)->group(function () {
+    Route::get('/books', 'index')->name('books.index');
+    Route::get('/book/{book}', 'show')->name('books.show');
+    Route::get('/add-book', 'create')->name('books.create');
+    Route::post('/books',  'store')->name('books.store');
+    Route::delete('/books/{book}', 'destroy')->name('books.destroy');
+});
 
-Route::get('/book/{book}', [BookController::class, 'show'])->name('books.show');
-
-Route::get('/add-book', [BookController::class, 'create'])->name('books.create');
-
-Route::post('/books', [BookController::class, 'store'])->name('books.store');
-
-Route::delete('/books/{book}', [BookController::class, 'destroy'])->name('books.destroy');
+Route::middleware('guest')->controller(AuthController::class)->group(function () {
+    Route::get('register',  'showRegisterForm')->name('show.register');
+    Route::get('login',  'showLoginForm')->name('show.login');
+    Route::post('register', 'register')->name('register');
+    Route::post('login', 'login')->name('login');
+});
