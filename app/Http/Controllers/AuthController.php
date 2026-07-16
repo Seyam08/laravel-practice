@@ -71,4 +71,10 @@ class AuthController extends Controller
 
         return redirect('/')->with('logout-success', 'You have been logged out successfully.');
     }
+
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('profile.index', ['user' => $user]);
+    }
 }
