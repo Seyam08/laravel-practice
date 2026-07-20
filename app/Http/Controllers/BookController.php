@@ -44,6 +44,27 @@ class BookController extends Controller
         return redirect()->route('books.show', $book->id)->with('create-success', 'Book created successfully.');
     }
 
+    public function edit(Book $book)
+    {
+        $authors = Author::orderBy('name')->get();
+
+        return view('books.edit', ['book' => $book, 'authors' => $authors]);
+    }
+
+    public function update(Request $request, Book $book)
+    {
+        $validated = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'author_id' => ['required', 'exists:authors,id'],
+            'description' => ['required', 'string'],
+            'price' => ['required', 'numeric', 'min:0'],
+        ]);
+
+        $book->update($validated);
+
+        return redirect()->route('books.show', $book->id)->with('update-success', 'Book updated successfully.');
+    }
+
     public function destroy(Book $book)
     {
         $book->delete();
