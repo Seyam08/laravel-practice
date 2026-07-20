@@ -31,7 +31,8 @@
             </div>
         </div>
 
-        <div class="flex justify-end gap-3 px-6 py-4">
+        <div class="flex justify-between gap-3 px-6 py-4">
+
             <form action="{{ route('books.destroy', $book->id) }}" method="POST"
                 onsubmit="return confirm('Are you sure you want to delete this book?');">
                 @csrf
@@ -39,6 +40,8 @@
                 <button type="submit"
                     class="rounded-md bg-red-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">Delete</button>
             </form>
+            <a href="{{ route('books.edit', $book->id) }}"
+                class="rounded-md bg-gray-800 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2">Edit</a>
         </div>
     </div>
 </x-layout>
